@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Glamping at the Cave · Rockingham Retreats</title>
+<meta name="description" content="Private glamping and tent sites on Cave Hill Farm, a sixth-generation family farm in McGaheysville, Virginia — minutes from Shenandoah National Park.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://hipcamp-res.cloudinary.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cave:#161411;
+  --cave-2:#211e19;
+  --stone:#3a352d;
+  --moss:#3d4a2c;
+  --moss-2:#34401f;
+  --fern:#7f8f4e;
+  --lichen:#b9c28a;
+  --canvas:#f3ede1;
+  --canvas-2:#e8dfcd;
+  --bark:#6e5037;
+  --ember:#e0782f;
+  --ember-2:#f29a4a;
+  --ink:#1d1a15;
+  --muted:#7a7263;
+  --line:rgba(29,26,21,.12);
+  --line-d:rgba(243,237,225,.14);
+  --warn:#e8a33c;
+  --bad:#d4553a;
+  --r:22px;
+  --ease:cubic-bezier(.25,.8,.3,1);
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Figtree",system-ui,sans-serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --topo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' fill='none' stroke='%23f3ede1' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M-20 120C80 60 160 170 260 120S440 40 620 110'/%3E%3Cpath d='M-20 160C90 100 170 210 270 160S450 80 620 150'/%3E%3Cpath d='M-20 200C100 140 180 250 280 200S460 120 620 190'/%3E%3Cpath d='M-20 240C110 180 190 290 290 240S470 160 620 230'/%3E%3Cpath d='M-20 380C60 330 150 430 250 390S430 300 620 370'/%3E%3Cpath d='M-20 420C70 370 160 470 260 430S440 340 620 410'/%3E%3Cpath d='M-20 460C80 410 170 510 270 470S450 380 620 450'/%3E%3Cellipse cx='450' cy='300' rx='60' ry='34'/%3E%3Cellipse cx='450' cy='300' rx='95' ry='56'/%3E%3Cellipse cx='120' cy='310' rx='40' ry='22'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--cave);color:var(--canvas);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+.display{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.94}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;border-radius:2px}
+.skip{position:absolute;left:-999px;top:10px;background:var(--ember);color:var(--cave);padding:10px 16px;border-radius:10px;z-index:200;font-weight:700}
+.skip:focus{left:10px}
+.grain{position:relative;isolation:isolate}
+.grain::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.06;pointer-events:none;z-index:-1;border-radius:inherit}
+.topo{background-image:var(--topo);background-size:600px}
+
+/* buttons: soft color changes, tiny lift */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:.97rem;text-decoration:none;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease),box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn .arr{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-ember{background:var(--ember);color:var(--cave);box-shadow:0 12px 28px -14px rgba(224,120,47,.8)}
+.btn-ember:hover{background:var(--ember-2)}
+.btn-ember .arr{background:var(--cave);color:var(--ember)}
+.btn-ghost{border:1.5px solid var(--line-d);color:var(--canvas)}
+.btn-ghost:hover{background:rgba(243,237,225,.08);border-color:rgba(243,237,225,.35)}
+.btn-dark{background:var(--cave);color:var(--canvas)}
+.btn-dark:hover{background:var(--moss)}
+.btn-dark .arr{background:var(--ember);color:var(--cave)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:100;padding:16px 0;transition:background .3s,padding .3s}
+.nav.solid{padding:10px 0;background:rgba(22,20,17,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-d)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:40px;height:40px;border-radius:50% 50% 10px 10px;background:var(--ember);display:grid;place-items:center;color:var(--cave)}
+.brand b{font-family:var(--display);font-weight:800;font-size:1.12rem;letter-spacing:-.02em;line-height:1}
+.brand small{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-top:3px}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;transition:background .25s,color .25s}
+.nav-links a:not(.btn):hover{background:rgba(243,237,225,.08)}
+.nav-links a.active:not(.btn){color:var(--ember-2)}
+.nav-links .btn{padding:11px 20px;margin-left:8px}
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line-d);position:relative}
+.burger span{position:absolute;left:13px;right:13px;height:2px;background:var(--canvas);border-radius:2px;transition:transform .3s,opacity .2s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:22px}.burger span:nth-child(3){top:28px}
+.nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{padding:140px 0 0;background:radial-gradient(900px 600px at 85% 30%,rgba(61,74,44,.55),transparent 65%),radial-gradient(600px 400px at 0% 100%,rgba(224,120,47,.10),transparent 60%),var(--cave)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:26px;padding-bottom:40px}
+.hero-copy .eyebrow{color:var(--lichen)}
+.hero h1{font-size:clamp(3.4rem,7.6vw,7.4rem)}
+.hero h1 em{font-style:normal;color:var(--ember)}
+.hero h1 .out{-webkit-text-stroke:2px var(--canvas);color:transparent}
+.hero-lead{max-width:480px;font-size:1.1rem;color:rgba(243,237,225,.78)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.rating{display:flex;align-items:center;gap:14px;font-size:.9rem;color:rgba(243,237,225,.75)}
+.faces{display:flex}
+.faces img,.faces span{width:36px;height:36px;border-radius:50%;border:2px solid var(--cave);object-fit:cover;margin-left:-10px;background:var(--stone);display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.faces>*:first-child{margin-left:0}
+.rating b{color:var(--canvas)}
+
+.hero-visual{position:relative;height:min(78vh,700px);min-height:520px}
+.arch{position:absolute;inset:0 0 0 60px;border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--stone);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(22,20,17,.55))}
+.arch-ring{position:absolute;inset:-14px -14px -14px 46px;border-radius:999px 999px 38px 38px;border:1.5px dashed rgba(185,194,138,.35);pointer-events:none}
+.inset{position:absolute;left:0;bottom:70px;width:180px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid var(--cave);background:var(--stone);box-shadow:0 20px 40px -14px rgba(0,0,0,.7)}
+.inset img{width:100%;height:100%;object-fit:cover}
+.float-card{position:absolute;right:-18px;top:90px;width:250px;padding:18px 20px;border-radius:20px;background:rgba(243,237,225,.95);color:var(--ink);box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+.float-card .stars{display:flex;align-items:center;gap:8px;font-weight:800;font-family:var(--display);font-size:1.4rem;letter-spacing:-.02em}
+.float-card .stars i{font-style:normal;font-size:.75rem;font-family:var(--body);font-weight:700;padding:4px 8px;border-radius:999px;background:var(--moss);color:var(--lichen);letter-spacing:0}
+.float-card p{font-size:.92rem;margin-top:6px;line-height:1.45}
+.float-card small{display:block;margin-top:8px;color:var(--muted);font-size:.78rem;font-weight:600}
+.tag-pin{position:absolute;left:84px;top:34px;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(22,20,17,.7);backdrop-filter:blur(8px);font-size:.82rem;font-weight:700;border:1px solid var(--line-d)}
+.tag-pin i{width:8px;height:8px;border-radius:50%;background:var(--ember);box-shadow:0 0 0 4px rgba(224,120,47,.25)}
+
+.facts{margin-top:70px;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);background:rgba(22,20,17,.4)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{display:flex;gap:16px;align-items:flex-start;padding:30px 26px;border-left:1px solid var(--line-d);transition:background .25s}
+.fact:first-child{border-left:0;padding-left:0}
+.fact:hover{background:rgba(243,237,225,.03)}
+.fact .ico{flex:0 0 46px;height:46px;border-radius:14px;background:var(--moss);color:var(--lichen);display:grid;place-items:center}
+.fact .ico svg{width:22px;height:22px}
+.fact b{display:block;font-family:var(--display);font-size:1.12rem;letter-spacing:-.01em;line-height:1.2}
+.fact span{font-size:.86rem;color:rgba(243,237,225,.6)}
+
+/* ---------- section scaffolding ---------- */
+.sec{padding:clamp(90px,11vw,140px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(2.6rem,5.6vw,4.8rem);margin-top:14px}
+.sec-head p{max-width:420px;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.light{background:var(--canvas);color:var(--ink)}
+.light .eyebrow{color:var(--bark)}
+
+/* ---------- gallery ---------- */
+.gallery{border-radius:40px 40px 0 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);font-weight:600;font-size:.92rem;transition:background .2s,color .2s,border-color .2s}
+.filter:hover{border-color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
+.filter sup{font-size:.7em;margin-left:3px;opacity:.6}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(90px,9vw,128px);grid-auto-flow:dense;gap:14px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;background:var(--canvas-2);cursor:zoom-in;animation:fadeIn .4s ease both}
+.tile.hidden{display:none}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.03)}
+.tile figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(243,237,225,.92);color:var(--ink);font-size:.78rem;font-weight:700}
+.tile .zoom{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;background:rgba(22,20,17,.55);backdrop-filter:blur(6px);color:var(--canvas);display:grid;place-items:center;opacity:0;transition:opacity .25s}
+.tile:hover .zoom,.tile:focus-visible .zoom{opacity:1}
+.tile.lead::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(22,20,17,.75))}
+.tile.lead .lead-txt{position:absolute;z-index:2;left:24px;bottom:22px;right:24px;color:var(--canvas)}
+.tile.lead .lead-txt b{display:block;font-family:var(--display);font-size:clamp(1.4rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1.05}
+.tile.lead .lead-txt span{font-size:.88rem;opacity:.8}
+.tile.lead figcaption{display:none}
+.s-a{grid-column:span 7;grid-row:span 4}.s-b{grid-column:span 5;grid-row:span 2}.s-c{grid-column:span 5;grid-row:span 2}
+.s-d{grid-column:span 4;grid-row:span 3}.s-e{grid-column:span 4;grid-row:span 3}.s-f{grid-column:span 4;grid-row:span 3}
+.s-g{grid-column:span 6;grid-row:span 3}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:300;background:rgba(14,12,10,.95);display:grid;grid-template-rows:auto 1fr auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.lb.open{opacity:1;visibility:visible}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;font-weight:600}
+.lb-stage{position:relative;display:grid;place-items:center;padding:0 80px;overflow:hidden}
+.lb-stage img{max-height:78vh;max-width:100%;border-radius:18px;object-fit:contain;transition:opacity .2s}
+.lb-stage img.swap{opacity:0}
+.lb-btn{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line-d);display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+.lb-btn:hover{background:var(--ember);color:var(--cave);border-color:var(--ember)}
+.lb-prev,.lb-next{position:absolute;top:50%;translate:0 -50%}
+.lb-prev{left:18px}.lb-next{right:18px}
+.lb-thumbs{display:flex;gap:8px;justify-content:center;padding:16px;overflow-x:auto}
+.lb-thumbs button{flex:0 0 64px;height:46px;border-radius:10px;overflow:hidden;opacity:.45;transition:opacity .2s;border:2px solid transparent}
+.lb-thumbs button.on{opacity:1;border-color:var(--ember)}
+.lb-thumbs button:hover{opacity:.9}
+.lb-thumbs img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- sites (tabbed showcase) ---------- */
+.sites{padding-top:0}
+.showcase{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:stretch}
+.tabs{display:flex;flex-direction:column;gap:12px}
+.tab{text-align:left;padding:22px 22px 22px 24px;border-radius:24px;border:1.5px solid var(--line);display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;transition:background .25s,border-color .25s,color .25s}
+.tab:hover{border-color:rgba(29,26,21,.35);background:rgba(255,255,255,.45)}
+.tab .n{font-family:var(--display);font-weight:800;font-size:1.9rem;letter-spacing:-.04em;color:var(--bark);opacity:.55;line-height:1}
+.tab b{display:block;font-family:var(--display);font-size:1.2rem;letter-spacing:-.02em;line-height:1.15}
+.tab small{font-size:.83rem;color:var(--muted);font-weight:600}
+.tab .go{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .25s,color .25s,border-color .25s}
+.tab[aria-selected="true"]{background:var(--moss);color:var(--canvas);border-color:var(--moss)}
+.tab[aria-selected="true"] .n{color:var(--lichen);opacity:1}
+.tab[aria-selected="true"] small{color:rgba(243,237,225,.7)}
+.tab[aria-selected="true"] .go{background:var(--ember);border-color:var(--ember);color:var(--cave)}
+.tab-note{margin-top:auto;padding:22px;border-radius:24px;background:var(--canvas-2);font-size:.92rem}
+.tab-note b{font-family:var(--display);font-size:1.1rem;display:block;margin-bottom:4px}
+
+.stage{position:relative;border-radius:30px;overflow:hidden;min-height:640px;background:var(--stone);color:var(--canvas)}
+.stage-img{position:absolute;inset:0}
+.stage-img img{width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.stage-img img.swap{opacity:0}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,20,17,.88) 0%,rgba(22,20,17,.55) 45%,rgba(22,20,17,.05) 75%);pointer-events:none}
+.stage-body{position:relative;z-index:2;display:flex;flex-direction:column;gap:18px;padding:40px;max-width:560px;min-height:640px;transition:opacity .3s}
+.stage-body.swap{opacity:0}
+.site-tag{display:flex;gap:8px;flex-wrap:wrap}
+.site-tag span{padding:6px 12px;border-radius:999px;background:rgba(243,237,225,.14);backdrop-filter:blur(8px);font-size:.8rem;font-weight:700}
+.site-tag span.hot{background:var(--ember);color:var(--cave)}
+.stage h3{font-size:clamp(2.2rem,4vw,3.4rem)}
+.stage p{color:rgba(243,237,225,.85)}
+.amen{display:grid;grid-template-columns:1fr 1fr;gap:8px;list-style:none}
+.amen li{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:12px;font-size:.87rem;font-weight:600;background:rgba(22,20,17,.5);border:1px solid rgba(243,237,225,.12)}
+.amen li svg{width:16px;height:16px;flex:0 0 16px}
+.amen li.y svg{color:var(--lichen)}.amen li.n{opacity:.65}.amen li.n svg{color:#e7a08e}.amen li.w svg{color:var(--warn)}
+.stage-foot{margin-top:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.thumbs{position:absolute;z-index:3;right:24px;bottom:24px;display:flex;gap:8px;padding:8px;border-radius:18px;background:rgba(22,20,17,.55);backdrop-filter:blur(10px)}
+.thumbs button{width:62px;height:62px;border-radius:12px;overflow:hidden;border:2px solid transparent;opacity:.6;background:var(--stone);transition:opacity .2s,border-color .2s}
+.thumbs button:hover{opacity:1}
+.thumbs button.on{opacity:1;border-color:var(--ember)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- host ---------- */
+.host{padding-top:0}
+.host-card{border-radius:40px;background:var(--moss);color:var(--canvas);padding:clamp(30px,4.5vw,60px);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:center;overflow:hidden}
+.collage{position:relative;height:100%;min-height:480px}
+.collage .ph{position:absolute;border-radius:26px;overflow:hidden;background:var(--moss-2);box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
+.collage .ph img{width:100%;height:100%;object-fit:cover}
+.collage .p1{inset:0 22% 18% 0}
+.collage .p2{right:0;top:12%;width:40%;height:38%;border:5px solid var(--moss)}
+.stamp{position:absolute;right:6%;bottom:0;width:200px;aspect-ratio:1}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%}
+.stamp svg text{font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:3px;fill:var(--lichen);text-transform:uppercase}
+.stamp .ava{position:absolute;inset:18%;border-radius:50%;overflow:hidden;border:5px solid var(--canvas);background:var(--stone);box-shadow:0 16px 40px -14px rgba(0,0,0,.6)}
+.stamp .ava img{width:100%;height:100%;object-fit:cover}
+.stamp-bg{position:absolute;inset:4%;border-radius:50%;background:var(--moss-2)}
+.host-card .eyebrow{color:var(--lichen)}
+.host-card h2{font-size:clamp(2.4rem,4.6vw,4rem);margin:14px 0 18px}
+.host-card h2 em{font-style:normal;color:var(--ember-2)}
+.host-text{color:rgba(243,237,225,.85);font-size:1.03rem}
+.host-text i{color:var(--canvas)}
+.host-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:28px 0}
+.stat{padding:14px 16px;border-radius:16px;background:rgba(22,20,17,.22);border:1px solid rgba(243,237,225,.12);transition:background .25s}
+.stat:hover{background:rgba(22,20,17,.35)}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:1.75rem;letter-spacing:-.03em;line-height:1}
+.stat span{font-size:.78rem;opacity:.75;font-weight:600}
+.host-actions{display:flex;gap:12px;flex-wrap:wrap}
+.host-actions .btn-ghost{border-color:rgba(243,237,225,.3)}
+
+.below-host{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:18px}
+.reviews{display:grid;gap:18px;grid-template-columns:1fr 1fr}
+.review{padding:28px;border-radius:28px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:16px;transition:transform .25s var(--ease),box-shadow .25s}
+.review:hover{transform:translateY(-3px);box-shadow:0 20px 40px -26px rgba(29,26,21,.35)}
+.review .top{display:flex;justify-content:space-between;align-items:center}
+.review .q{font-family:var(--display);font-weight:800;font-size:3.6rem;line-height:.6;color:var(--ember);height:24px}
+.review .rec{font-size:.75rem;font-weight:700;padding:5px 10px;border-radius:999px;background:#eef1e2;color:var(--moss)}
+.review p{font-size:1rem;flex:1}
+.who{display:flex;align-items:center;gap:12px;font-size:.88rem}
+.who img,.who .ini{width:42px;height:42px;border-radius:50%;object-fit:cover;background:var(--canvas-2);display:grid;place-items:center;font-weight:800;font-family:var(--display)}
+.who b{display:block;font-size:.95rem}
+.who span{color:var(--muted)}
+.where{padding:28px;border-radius:28px;background:var(--canvas-2);display:flex;flex-direction:column;gap:12px}
+.where h3{font-family:var(--display);font-weight:800;font-size:1.55rem;letter-spacing:-.02em;line-height:1.05}
+.where ul{list-style:none;display:grid}
+.where li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+.where li:last-child{border:0}
+.where li b{font-family:var(--display);font-size:1.2rem;min-width:62px;color:var(--bark);line-height:1.25}
+.where li span{font-size:.93rem}
+
+/* ---------- booking ---------- */
+.book{padding-top:0}
+.book-banner{position:relative;height:340px;overflow:hidden;background:var(--cave-2)}
+.book-banner img{width:100%;height:100%;object-fit:cover}
+.book-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,20,17,.35),var(--cave))}
+.book .sec-head{margin-top:-170px;position:relative;z-index:2}
+.book .sec-head p{color:rgba(243,237,225,.7)}
+.book .eyebrow{color:var(--ember-2)}
+.book-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:28px;align-items:start}
+.form{display:grid;gap:22px}
+.step{padding:28px;border-radius:28px;background:var(--cave-2);border:1px solid var(--line-d);transition:border-color .25s}
+.step:focus-within{border-color:rgba(224,120,47,.5)}
+.step-h{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.step-h i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--ember);color:var(--cave);display:grid;place-items:center;font-weight:800;font-family:var(--display)}
+.step-h h3{font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pick label{position:relative;display:block;border-radius:20px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:var(--stone);transition:border-color .2s,transform .25s var(--ease)}
+.pick label:hover{transform:translateY(-2px)}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick .pi{display:block;overflow:hidden}
+.pick img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.6) brightness(.7);transition:filter .25s}
+.pick .pk{display:block;padding:12px 14px}
+.pick .pk b{display:block;font-family:var(--display);font-size:1rem;line-height:1.15}
+.pick .pk span{font-size:.78rem;opacity:.7}
+.pick .tick{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:var(--ember);color:var(--cave);display:grid;place-items:center;opacity:0;transition:opacity .2s}
+.pick label:has(input:checked){border-color:var(--ember)}
+.pick input:checked~.pi img{filter:none}
+.pick input:checked~.tick{opacity:1}
+.pick input:focus-visible~.pk{outline:3px solid var(--ember);outline-offset:-3px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:7px}
+.field label,.field .lbl{font-size:.82rem;font-weight:700;letter-spacing:.04em;color:rgba(243,237,225,.7)}
+.field input,.field select,.field textarea{width:100%;padding:15px 16px;border-radius:14px;background:var(--cave);border:1.5px solid var(--line-d);transition:border-color .2s,box-shadow .2s;color-scheme:dark}
+.field textarea{resize:vertical;min-height:110px}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(243,237,225,.3)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember);box-shadow:0 0 0 4px rgba(224,120,47,.18)}
+.field.err input{border-color:var(--bad)}
+.field .msg{font-size:.8rem;color:#f0917b}
+.stepper{display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 16px;border-radius:14px;background:var(--cave);border:1.5px solid var(--line-d)}
+.stepper b{font-family:var(--display);font-size:1.3rem;min-width:28px;text-align:center}
+.stepper div{display:flex;align-items:center;gap:8px}
+.stepper button{width:38px;height:38px;border-radius:11px;background:var(--stone);font-size:1.2rem;font-weight:700;transition:background .2s,color .2s}
+.stepper button:hover:not(:disabled){background:var(--ember);color:var(--cave)}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper span{font-size:.9rem;font-weight:600}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:14px;background:var(--cave);border:1.5px solid var(--line-d);cursor:pointer}
+.toggle input{position:absolute;opacity:0}
+.sw{width:50px;height:28px;border-radius:999px;background:var(--stone);position:relative;transition:background .2s;flex:0 0 auto}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--canvas);transition:transform .2s}
+.toggle input:checked+.sw{background:var(--fern)}
+.toggle input:checked+.sw::after{transform:translateX(22px)}
+.toggle input:focus-visible+.sw{outline:3px solid var(--ember);outline-offset:3px}
+.note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;font-size:.9rem;background:rgba(232,163,60,.1);border:1px solid rgba(232,163,60,.35);color:#f3cf98}
+.note[hidden]{display:none}
+.note svg{flex:0 0 18px;margin-top:2px}
+.stack{display:grid;gap:14px}
+
+.ticket{position:sticky;top:96px;border-radius:28px;background:var(--canvas);color:var(--ink);overflow:hidden}
+.t-img{position:relative;height:190px;overflow:hidden;background:var(--canvas-2)}
+.t-img img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.t-img img.swap{opacity:0}
+.t-img span{position:absolute;left:18px;bottom:14px;padding:6px 12px;border-radius:999px;background:var(--canvas);font-size:.78rem;font-weight:700}
+.t-body{padding:24px 26px 20px}
+.t-body h3{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.05}
+.t-body .sub{color:var(--muted);font-size:.88rem;margin-top:4px}
+.t-cut{position:relative;height:0;border-top:2px dashed var(--line);margin:0 26px}
+.t-cut::before,.t-cut::after{content:"";position:absolute;top:-14px;width:26px;height:26px;border-radius:50%;background:var(--cave)}
+.t-cut::before{left:-40px}.t-cut::after{right:-40px}
+.t-nights{display:flex;align-items:baseline;gap:10px;padding:22px 26px 4px;font-weight:600}
+.t-nights b{font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:1;letter-spacing:-.04em;color:var(--ember)}
+.t-rows{display:grid;gap:12px;padding:14px 26px 22px}
+.t-rows div{display:flex;justify-content:space-between;gap:12px;font-size:.93rem}
+.t-rows dt{color:var(--muted)}
+.t-rows dd{font-weight:700;text-align:right}
+.t-pack{margin:0 26px 24px;padding:16px;border-radius:18px;background:var(--canvas-2)}
+.t-pack h4{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;color:var(--bark)}
+.t-pack ul{list-style:none;display:grid;gap:6px;font-size:.88rem}
+.t-pack li{display:flex;gap:8px;align-items:flex-start}
+.t-pack li::before{content:"";flex:0 0 7px;height:7px;border-radius:50%;background:var(--fern);margin-top:8px}
+.t-submit{padding:0 26px 26px}
+.t-submit .btn{width:100%;justify-content:space-between}
+.t-submit small{display:block;text-align:center;color:var(--muted);font-size:.78rem;margin-top:10px}
+
+.done{position:fixed;inset:0;z-index:400;display:grid;place-items:center;padding:24px;background:rgba(14,12,10,.8);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.done.open{opacity:1;visibility:visible}
+.done-box{width:min(480px,100%);padding:40px;border-radius:32px;background:var(--canvas);color:var(--ink);text-align:center}
+.done-ic{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:var(--moss);color:var(--lichen);display:grid;place-items:center}
+.done h3{font-family:var(--display);font-weight:800;font-size:2.2rem;letter-spacing:-.03em;line-height:1}
+.done p{color:var(--muted);margin:12px 0 24px}
+.done code{font-family:var(--display);font-weight:800;color:var(--bark)}
+
+footer{border-top:1px solid var(--line-d);padding:34px 0;font-size:.88rem;color:rgba(243,237,225,.55)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--ember-2)}
+.mcta{display:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}
+  .hero-visual{height:560px}
+  .float-card{right:10px}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line-d)}
+  .showcase{grid-template-columns:1fr}
+  .tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  .tab{flex:1 0 250px}
+  .tab-note{display:none}
+  .host-card{grid-template-columns:1fr}
+  .book-grid{grid-template-columns:1fr}
+  .ticket{position:relative;top:0}
+  .below-host{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:10px;background:var(--cave);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;z-index:-1}
+  .nav.open .nav-links{opacity:1;visibility:visible}
+  .nav-links a{font-family:var(--display);font-size:2rem;font-weight:800}
+  .nav-links .btn{font-family:var(--body);font-size:1rem;margin:14px 0 0}
+  .hero{padding-top:110px}
+  .hero-copy{padding-bottom:10px}
+  .hero-visual{height:460px;min-height:0}
+  .arch{left:24px}
+  .arch-ring{display:none}
+  .inset{width:120px;bottom:30px;border-width:4px}
+  .float-card{right:8px;top:auto;bottom:-30px;width:220px;padding:14px 16px}
+  .tag-pin{left:44px;top:22px}
+  .facts{margin-top:60px}
+  .facts .wrap{grid-template-columns:1fr}
+  .fact,.fact:first-child,.fact:nth-child(3){border-left:0;padding:20px 0;border-top:1px solid var(--line-d)}
+  .fact:first-child{border-top:0}
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;gap:10px}
+  .s-a{grid-column:span 2;grid-row:span 2}.s-b,.s-c,.s-d,.s-e,.s-f{grid-column:span 1;grid-row:span 1}.s-g{grid-column:span 2;grid-row:span 1}
+  .tile figcaption{font-size:.7rem;padding:4px 9px}
+  .stage,.stage-body{min-height:0}
+  .stage-img{position:relative;height:280px}
+  .stage::after{display:none}
+  .stage-body{padding:24px;max-width:none;background:var(--cave-2)}
+  .thumbs{top:204px;bottom:auto;right:12px}
+  .thumbs button{width:48px;height:48px}
+  .collage{min-height:380px}
+  .stamp{width:150px}
+  .host-stats{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:1fr}
+  .pick{grid-template-columns:1fr}
+  .pick label{display:grid;grid-template-columns:110px 1fr;align-items:stretch}
+  .pick img{aspect-ratio:auto;height:100%}
+  .pick .pk{display:flex;flex-direction:column;justify-content:center;padding-right:48px}
+  .pick .tick{top:50%;margin-top:-15px}
+  .row{grid-template-columns:1fr}
+  .book-banner{height:240px}
+  .book .sec-head{margin-top:-110px}
+  .lb-stage{padding:0 12px}
+  .lb-prev,.lb-next{top:auto;bottom:-6px;translate:none;width:46px;height:46px;background:rgba(22,20,17,.7)}
+  .mcta{display:flex;position:fixed;left:14px;right:14px;bottom:14px;z-index:90;justify-content:space-between;align-items:center;gap:12px;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(33,30,25,.94);backdrop-filter:blur(12px);border:1px solid var(--line-d);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+  .mcta.show{opacity:1;visibility:visible}
+  .mcta b{font-family:var(--display);font-size:1rem;line-height:1.1}
+  .mcta small{display:block;font-size:.74rem;opacity:.6}
+  .mcta .btn{padding:12px 18px}
+  footer{padding-bottom:100px}
+}
+@media (max-width:420px){.amen{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#book">Skip to booking</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Rockingham Retreats home">
+      <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M3 20 12 4l9 16H3Z"/><path d="M12 20v-6"/></svg></span>
+      <span><b>Rockingham Retreats</b><small>Glamping at the Cave</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="menu">
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#sites">Sites</a></li>
+      <li><a href="#host">Host</a></li>
+      <li><a class="btn btn-ember" href="#book">Request to book <span class="arr" aria-hidden="true">→</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero grain topo" aria-label="Introduction">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">McGaheysville · Shenandoah Valley, VA</span>
+      <h1 class="display">Glamping<br><span class="out">at the</span> <em>Cave.</em></h1>
+      <p class="hero-lead">Three private pockets of woodland on Cave Hill Farm, a sixth-generation family farm near the three caves that gave it its name. It's a short drive to Shenandoah National Park, but it feels much farther away.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ember" href="#book">Request your dates <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#sites">Explore the sites</a>
+      </div>
+      <div class="rating">
+        <div class="faces" aria-hidden="true"><img src="https://hipcamp-res.cloudinary.com/image/facebook/h_150,w_150/10162041883422788.jpg" alt=""><span>D</span></div>
+        <span><b>100% recommend</b> · every guest so far</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="arch-ring" aria-hidden="true"></div>
+      <div class="arch"><img src="https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_1800,q_auto/v1788050097/campground-photos/evypsc97w63eoz9dvfps/rockingham-retreats-glamping-at-the-cave-the-hideaway-glamp-tent.jpg" alt="The Hideaway glamp tent among the trees on Cave Hill Farm" fetchpriority="high"></div>
+      <span class="tag-pin"><i></i>The Hideaway Glamp Tent</span>
+      <div class="inset"><img src="https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_500,q_auto/v1788127784/land-photos/llsyrecstvwcuzipxevn/rockingham-retreats-glamping-at-the-cave-caveside-camping-at-the-cave.jpg" alt="Caveside Campsite in the woods"></div>
+      <div class="float-card">
+        <div class="stars">100% <i>Recommend</i></div>
+        <p>“It felt like a hotel room! Very spacious.”</p>
+        <small>Rachel G. · Sep 2026</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 20 6-10 4 6 3-4 5 8H3Z"/><circle cx="17" cy="6" r="2"/></svg></span><div><b>Near Shenandoah NP</b><span>~30 min to Swift Run Gap entrance</span></div></div>
+      <div class="fact"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 12h14L12 2 5 12Z"/><path d="M7 17h10"/></svg></span><div><b>40 private acres</b><span>3 sites, each tucked away</span></div></div>
+      <div class="fact"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 4 4.5 4 8.5a4 4 0 0 1-8 0c0-2 1-3 1-3s.5 1.5 1.5 1.5C10.5 7 12 5.5 12 3Z"/><path d="M5 21l14-3M19 21 5 18"/></svg></span><div><b>Campfires allowed</b><span>At every site on the farm</span></div></div>
+      <div class="fact"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="10" r="2"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="5" r="2"/><circle cx="19" cy="10" r="2"/><path d="M12 12c-3 0-5 3-5 5.5 0 2 2 2.5 5 2.5s5-.5 5-2.5C17 15 15 12 12 12Z"/></svg></span><div><b>Dogs welcome</b><span>Pets allowed at all 3 sites</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery light sec grain" id="photos" aria-labelledby="photosH">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="eyebrow">The property</span>
+        <h2 class="display" id="photosH">Take a look<br>around.</h2>
+      </div>
+      <div class="filters reveal" role="group" aria-label="Filter photos by site" id="filters">
+        <button class="filter" data-f="all" aria-pressed="true">All<sup></sup></button>
+        <button class="filter" data-f="hideaway" aria-pressed="false">Hideaway Tent<sup></sup></button>
+        <button class="filter" data-f="caveside" aria-pressed="false">Caveside<sup></sup></button>
+        <button class="filter" data-f="creekside" aria-pressed="false">Creekside<sup></sup></button>
+      </div>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+  </div>
+</section>
+
+<!-- ============ SITES ============ -->
+<section class="sites light sec" id="sites" aria-labelledby="sitesH">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="eyebrow">Where you'll sleep</span>
+        <h2 class="display" id="sitesH">Pick your pocket<br>of the farm.</h2>
+      </div>
+      <p class="reveal">One canvas glamp tent with a real bed and a toilet, and two tent sites for campers who bring their own gear. Each one is tucked away on its own.</p>
+    </div>
+    <div class="showcase reveal">
+      <div class="tabs" role="tablist" aria-label="Sites" id="tabs"></div>
+      <div class="stage" id="stage" role="tabpanel">
+        <div class="stage-img"><img id="stageImg" src="" alt=""></div>
+        <div class="stage-body" id="stageBody"></div>
+        <div class="thumbs" id="stageThumbs" role="group" aria-label="More photos of this site"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOST ============ -->
+<section class="host light sec" id="host" aria-labelledby="hostH">
+  <div class="wrap">
+    <div class="host-card grain reveal">
+      <div class="collage">
+        <div class="ph p1"><img src="https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_1000,q_auto/v1788050099/campground-photos/iyzgps5ex2ngw2jef4yq/rockingham-retreats-glamping-at-the-cave-the-hideaway-glamp-tent.jpg" alt="Cave Hill Farm glamp site" loading="lazy"></div>
+        <div class="ph p2"><img src="https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_600,q_auto/v1788127783/land-photos/veea9krcqvpiqen0wpqu/rockingham-retreats-glamping-at-the-cave-creekside-campsite.jpg" alt="Creekside Campsite" loading="lazy"></div>
+        <div class="stamp">
+          <div class="stamp-bg"></div>
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="circ" d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/></defs>
+            <text><textPath href="#circ">Sixth-generation · Cave Hill Farm · Family land ·</textPath></text>
+          </svg>
+          <div class="ava"><img src="https://hipcamp-res.cloudinary.com/image/upload/c_fill,f_auto,h_400,w_400/v1788046640/profile/tr6mmrhfo7yz7howoev8.jpg" alt="Evan and Amy H., hosts" loading="lazy"></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Meet your hosts</span>
+        <h2 class="display" id="hostH">Hosted by <em>Evan &amp; Amy H.</em></h2>
+        <p class="host-text">Cave Hill Farm has been in Evan's family for six generations. With Rockingham Retreats, he and Amy have opened a few quiet corners of it to guests. You can hike with your dog, sit by the fire under the trees, or head into the Valley for local restaurants, ice cream and Cave Hill Farms Brewery. As they put it, this is the Shenandoah Valley <i>"the way we've always loved it: quiet, beautiful, and best enjoyed with good company."</i></p>
+        <div class="host-stats">
+          <div class="stat"><b>100%</b><span>Recommend</span></div>
+          <div class="stat"><b>40</b><span>Acres</span></div>
+          <div class="stat"><b>6th</b><span>Generation farm</span></div>
+          <div class="stat"><b>2026</b><span>Joined Hipcamp</span></div>
+        </div>
+        <div class="host-actions">
+          <a class="btn btn-ember" href="#book" data-contact>Message the hosts <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#book">Check availability</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="below-host">
+      <div class="reviews">
+        <article class="review reveal">
+          <div class="top"><div class="q" aria-hidden="true">“</div><span class="rec">✓ Recommends</span></div>
+          <p>We had a great night in the glamping tent. It felt like a hotel room! Very spacious. Appreciated the lights, ceiling fan and toilet. Sorry we couldn't stay longer!</p>
+          <div class="who"><img src="https://hipcamp-res.cloudinary.com/image/facebook/h_150,w_150/10162041883422788.jpg" alt="" loading="lazy"><div><b>Rachel G.</b><span>Hideaway Glamp Tent · Sep 2026</span></div></div>
+        </article>
+        <article class="review reveal">
+          <div class="top"><div class="q" aria-hidden="true">“</div><span class="rec">✓ Recommends</span></div>
+          <p>Very nice site with a great set up and overall excellent experience. The site was very private and the setup was beautiful. Highly recommended!</p>
+          <div class="who"><span class="ini" aria-hidden="true">D</span><div><b>Drew G.</b><span>Hideaway Glamp Tent · Sep 2026</span></div></div>
+        </article>
+      </div>
+      <aside class="where reveal" aria-label="Location">
+        <span class="eyebrow" style="color:var(--bark)">Where you'll be</span>
+        <h3>McGaheysville, Rockingham County, Virginia</h3>
+        <ul>
+          <li><b>~30m</b><span>Drive to the Swift Run Gap entrance of Shenandoah National Park</span></li>
+          <li><b>Mins</b><span>To local restaurants, ice cream shops and Cave Hill Farms Brewery</span></li>
+          <li><b>3</b><span>Caves on the farm, the ones that gave it its name</span></li>
+          <li><b>🔒</b><span>The exact address is shared after booking, for the hosts' privacy</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="book sec" id="book" aria-labelledby="bookH">
+  <div class="book-banner"><img src="https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_2000,q_auto/v1788050094/campground-photos/ts9borujkxupauikzbdr/rockingham-retreats-glamping-at-the-cave-the-hideaway-glamp-tent.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal">
+        <span class="eyebrow">Request to book</span>
+        <h2 class="display" id="bookH">Save your spot<br>by the fire.</h2>
+      </div>
+      <p class="reveal">Choose a site and your dates, then tell Evan &amp; Amy who's coming. They'll reply to confirm availability and the nightly rate.</p>
+    </div>
+
+    <form class="book-grid" id="form" novalidate>
+      <div class="form">
+        <div class="step">
+          <div class="step-h"><i>1</i><h3 id="pickH">Choose your site</h3></div>
+          <div class="pick" id="pick" role="radiogroup" aria-labelledby="pickH"></div>
+        </div>
+
+        <div class="step">
+          <div class="step-h"><i>2</i><h3>Dates &amp; guests</h3></div>
+          <div class="stack">
+            <div class="row">
+              <div class="field" id="fIn"><label for="checkin">Check-in</label><input type="date" id="checkin" name="checkin" required><span class="msg" aria-live="polite"></span></div>
+              <div class="field" id="fOut"><label for="checkout">Check-out</label><input type="date" id="checkout" name="checkout" required><span class="msg" aria-live="polite"></span></div>
+            </div>
+            <div class="row">
+              <div class="field"><span class="lbl" id="adL">Adults</span>
+                <div class="stepper" role="group" aria-labelledby="adL"><span>13+ years</span><div><button type="button" data-step="adults" data-d="-1" aria-label="Fewer adults">−</button><b id="adults" aria-live="polite">1</b><button type="button" data-step="adults" data-d="1" aria-label="More adults">+</button></div></div>
+              </div>
+              <div class="field"><span class="lbl" id="chL">Children</span>
+                <div class="stepper" role="group" aria-labelledby="chL"><span>2–12 years</span><div><button type="button" data-step="children" data-d="-1" aria-label="Fewer children">−</button><b id="children" aria-live="polite">0</b><button type="button" data-step="children" data-d="1" aria-label="More children">+</button></div></div>
+              </div>
+            </div>
+            <div class="note" id="capNote" role="status" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg><span></span></div>
+            <label class="toggle"><span><b>Bringing a dog?</b><br><small style="opacity:.65">Pets are welcome at every site</small></span><input type="checkbox" id="pets" name="pets"><span class="sw" aria-hidden="true"></span></label>
+            <div class="field"><label for="vehicle">What are you driving in?</label>
+              <select id="vehicle" name="vehicle">
+                <option value="4wd">4WD / AWD vehicle</option>
+                <option value="2wd">2WD car or van</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="note" id="vehNote" role="status" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17v.5"/></svg><span>The hosts recommend 4WD for the tent sites. Mention your vehicle in the message and they'll tell you whether the access road will work.</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-h"><i>3</i><h3>Your details</h3></div>
+          <div class="stack">
+            <div class="row">
+              <div class="field" id="fName"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required placeholder="Jane Appleseed"><span class="msg" aria-live="polite"></span></div>
+              <div class="field" id="fEmail"><label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" required placeholder="jane@email.com"><span class="msg" aria-live="polite"></span></div>
+            </div>
+            <div class="field"><label for="phone">Phone <span style="opacity:.5;font-weight:500">(optional)</span></label><input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="+1 (540) 000-0000"></div>
+            <div class="field"><label for="message">Message to Evan &amp; Amy</label><textarea id="message" name="message" placeholder="Tell them about your trip: the occasion, what time you'll arrive, any questions…"></textarea></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="ticket" aria-label="Booking summary">
+        <div class="t-img"><img id="tImg" src="" alt=""><span id="tType"></span></div>
+        <div class="t-body"><h3 id="tName"></h3><div class="sub" id="tSub"></div></div>
+        <div class="t-cut" aria-hidden="true"></div>
+        <div class="t-nights"><b id="tNights">0</b><span id="tNightsL">nights, pick your dates</span></div>
+        <dl class="t-rows">
+          <div><dt>Check-in</dt><dd id="tIn">—</dd></div>
+          <div><dt>Check-out</dt><dd id="tOut">—</dd></div>
+          <div><dt>Guests</dt><dd id="tGuests">1 adult</dd></div>
+          <div><dt>Dog</dt><dd id="tPets">No</dd></div>
+        </dl>
+        <div class="t-pack"><h4>Pack for this site</h4><ul id="tPack"></ul></div>
+        <div class="t-submit">
+          <button class="btn btn-dark" type="submit">Send booking request <span class="arr" aria-hidden="true">→</span></button>
+          <small>No payment now. The hosts confirm first.</small>
+        </div>
+      </aside>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Rockingham Retreats · Cave Hill Farm, McGaheysville, VA</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta"><div><b>Glamping at the Cave</b><small>3 private sites · pets welcome</small></div><a class="btn btn-ember" href="#book">Book <span class="arr" aria-hidden="true">→</span></a></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-top"><span id="lbCount">1 / 1</span><button class="lb-btn" id="lbClose" aria-label="Close photo viewer">✕</button></div>
+  <div class="lb-stage">
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">←</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo">→</button>
+  </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+</div>
+
+<div class="done" id="done" role="dialog" aria-modal="true" aria-labelledby="doneH">
+  <div class="done-box">
+    <div class="done-ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg></div>
+    <h3 id="doneH">Request sent!</h3>
+    <p id="doneTxt"></p>
+    <button class="btn btn-dark" id="doneClose" type="button">Back to the farm <span class="arr" aria-hidden="true">→</span></button>
+  </div>
+</div>
+
+<script>
+(()=>{
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+/* ---------- data (from the Hipcamp listing) ---------- */
+const CDN='https://hipcamp-res.cloudinary.com/images/f_auto,c_limit,w_{W},q_auto/';
+const HT='rockingham-retreats-glamping-at-the-cave-the-hideaway-glamp-tent.jpg';
+const CV='rockingham-retreats-glamping-at-the-cave-caveside-camping-at-the-cave.jpg';
+const CK='rockingham-retreats-glamping-at-the-cave-creekside-campsite.jpg';
+const P={
+  h1:CDN+'v1788050097/campground-photos/evypsc97w63eoz9dvfps/'+HT,
+  h2:CDN+'v1788050102/campground-photos/w8c3d78hkern48tntssh/'+HT,
+  h3:CDN+'v1788050315/campground-photos/xgvjjvhqijevopc9tdyc/'+HT,
+  h4:CDN+'v1788050099/campground-photos/iyzgps5ex2ngw2jef4yq/'+HT,
+  h5:CDN+'v1788050094/campground-photos/ts9borujkxupauikzbdr/'+HT,
+  h6:CDN+'v1788050102/campground-photos/mw7rfjfhwopqmclaeewt/'+HT,
+  h7:'https://hipcamp-res.cloudinary.com/f_auto,c_limit,w_{W},q_auto/v1789253603/campground-photos/gjca202l13fzctdgcmzz.jpg',
+  c1:CDN+'v1788127784/land-photos/llsyrecstvwcuzipxevn/'+CV,
+  c2:CDN+'v1788131688/land-photos/avsl2inwnikbsq1gxrpt/'+CV,
+  c3:CDN+'v1788131688/land-photos/ufxzrjpuy8z3dxaavamg/'+CV,
+  k1:CDN+'v1788127783/land-photos/veea9krcqvpiqen0wpqu/'+CK,
+  k2:CDN+'v1788127783/land-photos/a4xu4txzinjfx18sm7fw/'+CK
+};
+const U=(k,w)=>P[k].replace('{W}',w);
+
+const SITES={
+  hideaway:{name:'The Hideaway Glamp Tent',type:'Canvas tent',sleeps:2,photos:['h7','h1','h2','h3','h4'],
+    meta:['Sleeps 2','Queen bed','1 bedroom','100% · 2 reviews'],
+    desc:"Tucked into the trees and hidden from the road. It's airy and bright inside, with a queen bed, a two-person table for morning coffee, a floor-length mirror and suitcase stands. Out on the porch, two Adirondack chairs face the Shenandoah range through the trees.",
+    amen:[['y','Campfires'],['y','Toilet'],['y','Showers'],['y','Pets allowed'],['n','No potable water'],['n','No picnic table']],
+    pack:['Drinking water. There is none on site','Firewood and matches for the fire pit','Leash and bowl if your dog is coming','Something warm for evenings on the porch']},
+  caveside:{name:'Caveside Campsite',type:'Tent site',sleeps:4,photos:['c1','c2','c3'],
+    meta:['Sleeps 4','Bring your tent','Booked 1 time'],
+    desc:"A private tent site in the woods near the farm's caves, set in its own quiet pocket of the property. It's a rustic spot where you pitch your tent, light a fire under the canopy and let the quiet do the rest.",
+    amen:[['y','Campfires'],['y','Pets allowed'],['w','4WD recommended'],['n','No toilet'],['n','No potable water'],['n','No showers']],
+    pack:['Tent, sleeping bags and pads','All your drinking and cooking water','A portable toilet or trowel kit','Firewood and matches','A 4WD vehicle if you can']},
+  creekside:{name:'Creekside Campsite',type:'Tent site',sleeps:4,photos:['k1','k2','c1'],
+    meta:['Sleeps 4','Bring your tent'],
+    desc:"A tent site in the trees near the creek, private and peaceful, with room for four. It's ideal for campers who want to hike with their dog by day and sit by the fire at night.",
+    amen:[['y','Campfires'],['y','Pets allowed'],['w','4WD recommended'],['n','No toilet'],['n','No potable water'],['n','No showers']],
+    pack:['Tent, sleeping bags and pads','All your drinking and cooking water','A portable toilet or trowel kit','Firewood and matches','A 4WD vehicle if you can']}
+};
+
+const PHOTOS=[
+  ['h1','hideaway','The Hideaway'],['h7','hideaway','Hideaway Tent'],['c1','caveside','Caveside'],
+  ['h2','hideaway','The Hideaway'],['h3','hideaway','The Hideaway'],['k1','creekside','Creekside'],
+  ['h4','hideaway','The Hideaway'],['c2','caveside','Caveside'],['h5','hideaway','The Hideaway'],
+  ['k2','creekside','Creekside'],['h6','hideaway','The Hideaway'],['c3','caveside','Caveside']
+];
+const SPANS=['s-a','s-b','s-c','s-d','s-e','s-f','s-g','s-g'];
+const ic={
+  y:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>',
+  n:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  w:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4"/></svg>'
+};
+/* gentle crossfade helper */
+const swap=(el,fn)=>{if(RM){fn();return}el.classList.add('swap');setTimeout(()=>{fn();requestAnimationFrame(()=>el.classList.remove('swap'))},180)};
+
+/* ---------- nav ---------- */
+const nav=$('#nav'),burger=$('#burger');
+const setMenu=o=>{nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':''};
+burger.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+$$('#menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+const secs=['photos','sites','host','book'].map(id=>document.getElementById(id));
+function onScroll(){
+  nav.classList.toggle('solid',scrollY>40);
+  const mid=innerHeight*.4;let cur=null;
+  secs.forEach(s=>{const r=s.getBoundingClientRect();if(r.top<mid&&r.bottom>mid)cur=s.id});
+  $$('#menu a:not(.btn)').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  const b=$('#book').getBoundingClientRect();
+  $('#mcta').classList.toggle('show',scrollY>innerHeight*.8&&!(b.top<innerHeight&&b.bottom>0));
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- gallery ---------- */
+const mosaic=$('#mosaic');
+PHOTOS.forEach(([k,site,label],i)=>{
+  const f=document.createElement('figure');
+  f.className='tile '+SPANS[i%SPANS.length]+(i===0?' lead':'');f.tabIndex=0;f.dataset.site=site;f.dataset.i=i;
+  f.setAttribute('role','button');f.setAttribute('aria-label','Open photo: '+label);
+  f.innerHTML=`<img src="${U(k,i===0?1600:900)}" alt="${label}, Rockingham Retreats" loading="lazy"><figcaption>${label}</figcaption><span class="zoom" aria-hidden="true">⤢</span>`+
+    (i===0?`<div class="lead-txt"><b>A glamp tent hidden in the trees</b><span>${PHOTOS.length} photos from Cave Hill Farm</span></div>`:'');
+  mosaic.appendChild(f);
+});
+$$('#filters .filter').forEach(b=>{
+  const f=b.dataset.f;b.querySelector('sup').textContent=f==='all'?PHOTOS.length:PHOTOS.filter(p=>p[1]===f).length;
+  b.addEventListener('click',()=>{
+    $$('#filters .filter').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    let n=0;
+    $$('.tile').forEach(t=>{
+      const show=f==='all'||t.dataset.site===f;
+      t.classList.toggle('hidden',!show);
+      if(show){t.className=t.className.replace(/s-[a-g]/,SPANS[n%SPANS.length]);t.style.animation='none';void t.offsetWidth;t.style.animation='';n++}
+    });
+  });
+});
+
+/* lightbox */
+const lb=$('#lb'),lbImg=$('#lbImg'),lbT=$('#lbThumbs');let set=[],idx=0,lastFocus=null;
+function openLB(list,i){
+  set=list;lastFocus=document.activeElement;
+  lbT.innerHTML=set.map((p,j)=>`<button aria-label="Photo ${j+1}"><img src="${U(p[0],200)}" alt=""></button>`).join('');
+  $$('#lbThumbs button').forEach((b,j)=>b.onclick=()=>showLB(j));
+  showLB(i,true);lb.classList.add('open');document.body.style.overflow='hidden';$('#lbClose').focus();
+}
+function showLB(j,instant){
+  idx=(j+set.length)%set.length;const p=set[idx];
+  const go=()=>{lbImg.src=U(p[0],2000);lbImg.alt=p[2]};
+  instant?go():swap(lbImg,go);
+  $('#lbCount').textContent=`${idx+1} / ${set.length} · ${p[2]}`;
+  $$('#lbThumbs button').forEach((b,k)=>b.classList.toggle('on',k===idx));
+}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+const openTile=t=>{const vis=$$('.tile:not(.hidden)');openLB(vis.map(v=>PHOTOS[+v.dataset.i]),vis.indexOf(t))};
+mosaic.addEventListener('click',e=>{const t=e.target.closest('.tile');if(t)openTile(t)});
+mosaic.addEventListener('keydown',e=>{const t=e.target.closest('.tile');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openTile(t)}});
+$('#lbPrev').onclick=()=>showLB(idx-1);$('#lbNext').onclick=()=>showLB(idx+1);$('#lbClose').onclick=closeLB;
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb-stage'))closeLB()});
+addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')showLB(idx-1);if(e.key==='ArrowRight')showLB(idx+1);
+  if(e.key==='Tab'){const f=[...lb.querySelectorAll('button')],a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+let sx=0;lb.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)showLB(idx+(d<0?1:-1))});
+
+/* ---------- sites showcase ---------- */
+const tabs=$('#tabs'),stageImg=$('#stageImg'),stageBody=$('#stageBody'),stageThumbs=$('#stageThumbs');
+Object.entries(SITES).forEach(([key,s],i)=>{
+  tabs.insertAdjacentHTML('beforeend',`<button class="tab" role="tab" id="tab-${key}" aria-controls="stage" aria-selected="${i===0}" tabindex="${i===0?0:-1}" data-key="${key}"><span class="n">0${i+1}</span><span><b>${s.name}</b><small>${s.type} · Sleeps ${s.sleeps}</small></span><span class="go" aria-hidden="true">→</span></button>`);
+});
+tabs.insertAdjacentHTML('beforeend',`<div class="tab-note"><b>Every site is private.</b>Each one sits in its own pocket of the farm, with campfires allowed and dogs welcome everywhere.</div>`);
+let curSite=null;
+function showSite(key,instant){
+  if(key===curSite)return;curSite=key;const s=SITES[key];
+  $$('.tab').forEach(t=>{const on=t.dataset.key===key;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
+  $('#stage').setAttribute('aria-labelledby','tab-'+key);
+  const draw=()=>{
+    stageBody.innerHTML=`<div class="site-tag"><span class="hot">Instant book</span>${s.meta.map(m=>`<span>${m}</span>`).join('')}</div>
+      <h3 class="display">${s.name}</h3><p>${s.desc}</p>
+      <ul class="amen">${s.amen.map(([t,l])=>`<li class="${t}">${ic[t]}${l}</li>`).join('')}</ul>
+      <div class="stage-foot"><a class="btn btn-ember" href="#book" data-pick="${key}">Book this site <span class="arr" aria-hidden="true">→</span></a>
+      <button class="btn btn-ghost" type="button" data-gallery="${key}">View ${s.photos.length} photos</button></div>`;
+  };
+  const img=()=>{stageImg.src=U(s.photos[0],1800);stageImg.alt=s.name};
+  stageThumbs.innerHTML=s.photos.map((p,j)=>`<button type="button" class="${j===0?'on':''}" data-ph="${p}" aria-label="Show photo ${j+1} of ${s.name}"><img src="${U(p,200)}" alt=""></button>`).join('');
+  if(instant){draw();img()}else{swap(stageBody,draw);swap(stageImg,img)}
+}
+tabs.addEventListener('click',e=>{const t=e.target.closest('.tab');if(t)showSite(t.dataset.key)});
+tabs.addEventListener('keydown',e=>{
+  const list=$$('.tab'),i=list.indexOf(document.activeElement);if(i<0)return;
+  let n=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=(i+1)%list.length;if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=(i-1+list.length)%list.length;
+  if(n!==null){e.preventDefault();list[n].focus();showSite(list[n].dataset.key)}
+});
+stageThumbs.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  $$('#stageThumbs button').forEach(x=>x.classList.toggle('on',x===b));
+  swap(stageImg,()=>{stageImg.src=U(b.dataset.ph,1800)});
+});
+showSite('hideaway',true);
+
+/* ---------- booking ---------- */
+const pick=$('#pick');
+Object.entries(SITES).forEach(([key,s],i)=>{
+  pick.insertAdjacentHTML('beforeend',`<label><input type="radio" name="site" value="${key}" ${i===0?'checked':''}><span class="pi"><img src="${U(s.photos[0],600)}" alt="" loading="lazy"></span><span class="pk"><b>${s.name}</b><span>${s.type} · Sleeps ${s.sleeps}</span></span><span class="tick" aria-hidden="true">✓</span></label>`);
+});
+const st={adults:1,children:0};
+const ci=$('#checkin'),co=$('#checkout');
+const today=new Date();today.setHours(0,0,0,0);
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+ci.min=iso(today);co.min=iso(new Date(today.getTime()+864e5));
+const fmt=v=>v?new Date(v+'T00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'—';
+const siteKey=()=>$('input[name=site]:checked').value;
+let lastSite=null;
+
+function update(){
+  const key=siteKey(),s=SITES[key];
+  let over=false;
+  if(st.adults+st.children>s.sleeps){over=true;if(st.adults>s.sleeps)st.adults=s.sleeps;st.children=Math.max(0,s.sleeps-st.adults)}
+  const cap=$('#capNote');
+  const msg=over?`${s.name} sleeps ${s.sleeps}, so we adjusted your guest count. Pick a tent site if you need room for up to 4.`:(s.sleeps===2&&st.adults+st.children===2?'The Hideaway sleeps 2 and you are at capacity. The tent sites take up to 4.':'');
+  cap.hidden=!msg;cap.querySelector('span').textContent=msg;
+  $('#adults').textContent=st.adults;$('#children').textContent=st.children;
+  $$('[data-step]').forEach(b=>{const k=b.dataset.step,d=+b.dataset.d,tot=st.adults+st.children;b.disabled=d<0?(k==='adults'?st.adults<=1:st.children<=0):tot>=s.sleeps});
+  $('#vehNote').hidden=!(s.type==='Tent site'&&$('#vehicle').value!=='4wd');
+  if(ci.value){const m=new Date(ci.value+'T00:00');m.setDate(m.getDate()+1);co.min=iso(m);if(co.value&&co.value<=ci.value)co.value=''}
+  const n=ci.value&&co.value?Math.round((new Date(co.value)-new Date(ci.value))/864e5):0;
+  if(lastSite!==key){
+    lastSite=key;
+    swap($('#tImg'),()=>{$('#tImg').src=U(s.photos[0],900);$('#tImg').alt=s.name});
+    $('#tName').textContent=s.name;$('#tType').textContent=s.type+' · Sleeps '+s.sleeps;
+    $('#tSub').textContent=s.meta.slice(1).join(' · ');
+    $('#tPack').innerHTML=s.pack.map(p=>`<li>${p}</li>`).join('');
+  }
+  $('#tNights').textContent=n;
+  $('#tNightsL').textContent=n?(n===1?'night under the trees':'nights under the trees'):'nights, pick your dates';
+  $('#tIn').textContent=fmt(ci.value);$('#tOut').textContent=fmt(co.value);
+  $('#tGuests').textContent=`${st.adults} adult${st.adults>1?'s':''}${st.children?`, ${st.children} child${st.children>1?'ren':''}`:''}`;
+  $('#tPets').textContent=$('#pets').checked?'Yes':'No';
+}
+$$('[data-step]').forEach(b=>b.addEventListener('click',()=>{st[b.dataset.step]+=+b.dataset.d;update()}));
+$('#form').addEventListener('change',update);
+$('#form').addEventListener('input',e=>{const f=e.target.closest('.field');if(f&&f.classList.contains('err')){f.classList.remove('err');f.querySelector('.msg').textContent=''}});
+
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-pick]');
+  if(a){$(`input[name=site][value="${a.dataset.pick}"]`).checked=true;update()}
+  const g=e.target.closest('[data-gallery]');
+  if(g){const s=SITES[g.dataset.gallery];openLB(s.photos.map(p=>[p,g.dataset.gallery,s.name]),0)}
+  if(e.target.closest('[data-contact]'))setTimeout(()=>$('#message').focus({preventScroll:true}),700);
+});
+
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();let first=null;
+  const mark=(id,msg)=>{const f=$(id);f.classList.add('err');f.querySelector('.msg').textContent=msg;first=first||f.querySelector('input')};
+  if(!ci.value)mark('#fIn','Choose a check-in date');else if(ci.value<ci.min)mark('#fIn','Check-in can’t be in the past');
+  if(!co.value)mark('#fOut','Choose a check-out date');
+  if(!$('#name').value.trim())mark('#fName','Please add your name');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#email').value.trim()))mark('#fEmail','Enter a valid email');
+  if(first){first.focus();return}
+  const s=SITES[siteKey()],n=+$('#tNights').textContent,ref='RR-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  const esc=v=>v.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  $('#doneTxt').innerHTML=`Thanks, ${esc($('#name').value.trim().split(' ')[0])}! Your request for <b>${s.name}</b> (${n} night${n===1?'':'s'}, ${fmt(ci.value)} → ${fmt(co.value)}) is with Evan &amp; Amy. Look for their reply at ${esc($('#email').value.trim())}.<br><br>Reference <code>${ref}</code>`;
+  $('#done').classList.add('open');document.body.style.overflow='hidden';$('#doneClose').focus();
+});
+$('#doneClose').onclick=()=>{$('#done').classList.remove('open');document.body.style.overflow='';$('#form').reset();st.adults=1;st.children=0;update();scrollTo({top:0,behavior:RM?'auto':'smooth'})};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#done').classList.contains('open'))$('#doneClose').click()});
+update();
+})();
+</script>
+</body>
+</html>
